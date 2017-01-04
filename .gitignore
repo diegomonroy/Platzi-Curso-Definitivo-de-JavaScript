@@ -1,0 +1,7 @@
+# Ignore Files #
+################
+
+# Ignore Folders
+/platzigram/node_modules/
+
+# Ignore Files
