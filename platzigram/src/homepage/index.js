@@ -6,7 +6,7 @@ var request = require('superagent');
 var header = require('../header');
 var axios = require('axios');
 
-page('/', header, loadPicturesAxios, function (ctx, next) {
+page('/', header, loadPicturesFetch, function (ctx, next) {
 	title('Platzigram');
 	var main = document.getElementById('main-container');
 	
@@ -24,14 +24,28 @@ page('/', header, loadPicturesAxios, function (ctx, next) {
 // 		});
 // }
 
-function loadPicturesAxios(ctx, next) {
-	axios
-		.get('/api/pictures')
+// function loadPicturesAxios(ctx, next) {
+// 	axios
+// 		.get('/api/pictures')
+// 		.then(function (res) {
+// 			ctx.pictures = res.data;
+// 			next();
+// 		})
+// 		.catch(function (err) {
+// 			console.log(err);
+// 		});
+// }
+
+function loadPicturesFetch(ctx, next) {
+	fetch('/api/pictures')
 		.then(function (res) {
-			ctx.pictures = res.data;
+			return res.jason();
+		})
+		.then(function (pictures) {
+			ctx.pictures = pictures.data;
 			next();
 		})
 		.catch(function (err) {
-			console.log(err)
-		});
+			console.log(err);
+		})
 }
