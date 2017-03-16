@@ -3,5 +3,7 @@
 
 # Ignore Folders
 /platzigram/node_modules/
+/platzigram/uploads/
 
 # Ignore Files
+/platzigram/npm-debug.log
